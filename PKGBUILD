@@ -6,6 +6,7 @@ arch=('i686' 'x86_64')
 url="http://brashmonkey.com/spriter.htm"
 license=('custom')
 depends=('qt5-multimedia' 'qt5-webkit' 'qt5-tools' 'libpng12' 'qtwebkit' 'phonon-qt4')
+makedepends=('chrpath')
 
 if [[ "$CARCH" == "x86_64" ]]; then
   _arch=64
@@ -29,8 +30,10 @@ package() {
 
   install -Dm644 SpriterEULA.txt "$pkgdir/usr/share/licenses/$pkgname/SpriterEULA.txt"
 
-  install -m755 Spriter "$pkgdir/opt/spriter/spriter.bin"
   install -m644 SpriterHelp.* "$pkgdir/opt/spriter/"
+
+  install -m755 Spriter "$pkgdir/opt/spriter/spriter.bin"
+  chrpath -d "$pkgdir/opt/spriter/spriter.bin"
 
   install -m644 TexturePackerTemplates/* "$pkgdir/opt/spriter/TexturePackerTemplates"
 
