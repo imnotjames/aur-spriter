@@ -1,3 +1,5 @@
+# Maintainer: James Ward <james@notjam.es>
+
 pkgname=spriter
 pkgver=R7
 pkgrel=1
