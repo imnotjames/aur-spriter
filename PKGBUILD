@@ -7,7 +7,7 @@ pkgdesc="2D Game Sprite Animation and Object Creation Tool"
 arch=('i686' 'x86_64')
 url="http://brashmonkey.com/spriter.htm"
 license=('custom')
-depends=('qt5-multimedia' 'qt5-webkit' 'qt5-tools' 'libpng12' 'qtwebkit' 'phonon-qt4')
+depends=('qt5-script' 'qt5-multimedia' 'qt5-webkit' 'qt5-tools' 'libpng12')
 makedepends=('chrpath')
 
 if [[ "$CARCH" == "x86_64" ]]; then
