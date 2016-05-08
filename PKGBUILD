@@ -27,7 +27,6 @@ package() {
 
   install -dm755 "$pkgdir/opt/spriter/"
   install -dm755 "$pkgdir/opt/spriter/TexturePackerTemplates/"
-  install -dm755 "$pkgdir/opt/spriter/plugins/"
   install -dm755 "$pkgdir/opt/spriter/lib/"
 
   install -Dm644 SpriterEULA.txt "$pkgdir/usr/share/licenses/$pkgname/SpriterEULA.txt"
