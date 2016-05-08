@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://brashmonkey.com/spriter.htm"
 license=('custom')
 depends=('qt5-script' 'qt5-multimedia' 'qt5-webkit' 'qt5-tools' 'libpng12' 'imagemagick>=7.0.0')
-makedepends=('chrpath')
+makedepends=('chrpath' 'patchelf')
 
 if [[ "$CARCH" == "x86_64" ]]; then
   _arch=64
@@ -43,6 +43,9 @@ package() {
   install -m644 png.so "$pkgdir/opt/spriter/lib"
   install -m644 png.la "$pkgdir/opt/spriter/lib"
 
+  # Remove some of the uneeded dependencies
+  patchelf --remove-needed "libMagickCore.so.4" "$pkgdir/opt/spriter/lib/png.so"
+  patchelf --remove-needed "libpthread.so.0" "$pkgdir/opt/spriter/lib/png.so"
 
   cp -a docs "$pkgdir/opt/spriter/"
   printf "#!/bin/sh\ncd /opt/spriter/\nexport LD_LIBRARY_PATH=\"/opt/spriter/lib/\"\n./spriter.bin\n" > "$pkgdir/usr/bin/spriter"
