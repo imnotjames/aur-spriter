@@ -7,7 +7,7 @@ pkgdesc="2D Game Sprite Animation and Object Creation Tool"
 arch=('i686' 'x86_64')
 url="http://brashmonkey.com/spriter.htm"
 license=('custom')
-depends=('qt5-script' 'qt5-multimedia' 'qt5-webkit' 'qt5-tools' 'libpng12')
+depends=('qt5-script' 'qt5-multimedia' 'qt5-webkit' 'qt5-tools' 'libpng12' 'imagemagick>=7.0.0')
 makedepends=('chrpath')
 
 if [[ "$CARCH" == "x86_64" ]]; then
@@ -38,13 +38,6 @@ package() {
   chrpath -d "$pkgdir/opt/spriter/spriter.bin"
 
   install -m644 TexturePackerTemplates/* "$pkgdir/opt/spriter/TexturePackerTemplates"
-
-
-  # Arch doesn't have this version
-  install -m644 "libMagick++-7.Q16HDRI.so.0" "$pkgdir/opt/spriter/lib"
-  install -m644 "libMagickCore-7.Q16HDRI.so.0" "$pkgdir/opt/spriter/lib"
-  install -m644 "libMagickWand-7.Q16HDRI.so.0" "$pkgdir/opt/spriter/lib"
-  install -m644 "libMagickLicense.txt" "$pkgdir/opt/spriter/lib"
 
   # Seems we need these too
   install -m644 libsteam_api.so "$pkgdir/opt/spriter/lib"
